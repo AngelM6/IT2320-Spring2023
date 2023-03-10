@@ -1,0 +1,70 @@
+<html>
+<head> 
+ <meta charset="utf-8"/>
+ <style>
+    #main-conatiner ( padding 200px 200px 200px 200px; )
+    #output ( font-size: 30px; )
+ </style> 
+ <title>Timers</title>  
+ <script>
+    "use strict"
+    // set up an event to handel the button push
+    window.onload = function() {
+        document.getElementById("start").onclick = startFcn;
+        document.getElementById("stop").onclick = stopFcn;
+        document.getElementById("reset").onclick = resetFcn;
+    }
+    // declare some GLOBAL variables
+    var counter = 1;
+    var timerLength = 100; //one second
+    var timer;
+    var minutes = 0;
+    var seconds = 0;
+    var tenths = 0;
+    var running = false;
+
+    //start function
+    function startFcn() {
+        if (!running) {
+            running= true;
+            timer= setInterval ( displayOutput, timerLength );
+        }
+    }
+
+    //everytime the timer elapses - run this function
+    function displayOutput() {
+        tenths++;
+        if (tenths == 10){
+            seconds++;
+            tenths = 0;
+        }
+        if (seconds == 60){
+            minutes++;
+            seconds = 0;
+        }
+        document.getElementById("output").innerHTML = minutes+":"+seconds+"."+tenths;
+    }
+    //stop function
+     function stopFcn() {
+        running= false;
+        clearInterval(timer)
+    }
+    //reset function
+    function resetFcn() {
+        minutes = 0;
+        seconds = 0;
+        tenths = 0;
+    }
+    //setTimeout(function, milliseconds); same thing but only once
+    //clearInterval(timer);
+ </script>
+</head>
+<body>
+    <h2>Week 5 - Timers</h2>
+    <div id="maincontainer">
+        <center>
+            <span id="output">Output Goes Here</span> <br /><br />
+            <button type="button" id="start">START</button> <button type="button" id="stop">STOP</button> <button type="button" id="reset">RESET</button>
+        </center>
+    </div>
+</html>
