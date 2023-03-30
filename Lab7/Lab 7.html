@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <style>
+      img {position: absolute;}
+   
+   </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script>
+      var image;
+      window.onload=function() {
+         image = $("#image");
+         image.fadeIn();
+         image.hide();
+      }
+   
+      function GO()  {
+         image.fadeIn(1000);
+         var wd=$(window).width()-400
+         var ws = wd + "px";
+         console.log(ws);
+         image.animate({left:ws},3000);
+         image.animate({left:0},3000);
+         image.fadeOut(1000);
+      }
+   
+   </script>
+   <title>Lab 7</title>
+
+</head>
+<body>
+   <h2>Angel Martinez IT2320 Walking Guy</h2>
+   <button onclick="GO()">GO</button>
+   <img src = "guy-walking.gif" id = "image">
+</body>
+
+</html>
