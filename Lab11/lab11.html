@@ -1,0 +1,66 @@
+<html>
+<head>
+<h2>Angel Martinez IT 2320 - Lab 11</h2>
+<script>
+function calculatePrime() {
+    var n = document.getElementById("number").value;
+    var output = document.getElementById("output");
+    output.innerHTML += "1 <br> 2 <br>";
+        for (let number = 3; number < n; number += 2) {
+            var isPrime = true;
+            for (let j = 3; j <= Math.round(Math.sqrt(number)); j++) {
+              if(number%j == 0){
+                isPrime = false;
+                break;
+              } 
+            }
+        if(isPrime){
+          output.innerHTML += number + "<br>";
+        }
+      }
+    }
+    function gcd(a, b) {
+      let remainder = 1;
+      var larger, smaller;
+      larger = Math.max(a,b);
+      smaller = Math.min(a,b);
+      console.log("l " + larger);
+      console.log("s " + smaller);
+      while(smaller != 0){
+        remainder = smaller;
+        smaller = larger % smaller;
+        if(smaller == 0) {
+        return remainder;
+      }
+    }
+  }
+        function test(){
+    document.getElementById('result').value = 154320 % 4320;
+  }
+  function display(){
+    let a = document.getElementById('number1').value;
+    let b = document.getElementById('number2').value;
+    let result = gcd(a, b);
+    document.getElementById('result').value = result;
+  }
+</script>
+    <title>Prime Number/GCD Calculator</title>
+</head>
+<body>
+<section>
+    <h3>Prime number calculator</h3>
+    <label for="number" >Enter a number: </label>
+    <input type="number" id="number">
+    <button onclick="calculatePrime()">Calculate</button>
+    <p id="output"></p>
+    <br>
+    <h3>GCD calculator</h3>
+    <label for="number1" >Enter a number: </label>
+    <input id="number1" type="number" name="number1" value="">
+    <input id="number2" type="number" name="number2" value="">
+    <button type="button" onclick="display()" name="button">Calculate</button>
+    <label for="result">Result</label>
+    <input type="text" id ="result" name="result" value="">
+</section>
+</body>
+</html>
