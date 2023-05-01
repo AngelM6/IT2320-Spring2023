@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+   canvas { border:1px solid #c3c3c3; }
+</style>
+</head>  
+<body>
+<h2>Angel Martinez - IT 2320 - Lab 12</h2>
+<canvas id="myCanvas" width="800" height="600">
+     Your browser does not support the canvas element.
+</canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    //square top left
+    ctx.fillStyle ="black";
+    ctx.fillRect(0, 0, 100, 100);
+    //square top right
+    ctx.strokeStyle = "red";
+    ctx.strokeRect (700, 0, 100, 100);
+    //circle bottom right
+    ctx.strokeStyle = "blue";
+    ctx.arc(750, 550, 50, 100, Math.PI*2, true);
+    ctx.stroke();
+    //circle outline bottom left
+    ctx.beginPath();
+    ctx.strokeStyle = "blue";
+    ctx.arc(50, 550, 50, 0, Math.PI*2, true);
+    ctx.stroke();
+    //filled circle bottom left
+    ctx.beginPath();
+    ctx.fillStyle = "green";  
+    ctx.arc(50, 550, 50, 0, Math.PI*2, true);
+    ctx.fill();
+    //text middle
+    ctx.fillStyle = "black"
+    ctx.font = "30px Arial";
+    ctx.fillText("Lab 12",350,300);
+
+
+</script>
+</body>
+</html>
