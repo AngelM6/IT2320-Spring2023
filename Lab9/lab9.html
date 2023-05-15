@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+$("button").click(function (){
+var zipCode = $('#zipCode').val();
+var url = "http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+
+",us&appid=9a1ccb3c5ec2265009c5e4ee66e7a82f&temperature=farenheit"
+
+$.ajax({
+method: "GET",
+url: url,
+dataType: "json"
+}).then(function (response){
+$("#cityname").html(response.name);
+$("#condition").html(response.weather[0].main);
+$("#temperature").html(response.main.temp);
+$("#windspeed").html(response.wind.speed);
+$("#humidity").html(response.main.humidity);
+$("#tempminmax").html(response.main.temp_min + "," + response.main.temp_max );
+$("#weather").removeAttr("style");
+
+});
+
+});
+
+});
+
+</script>
+</head>
+<body>
+<input id="zipCode" type="postal" placeholder="Enter zipcode"></input>
+<button>Submit</button>
+<div id="weather" style="display: none;">
+<hr>
+<table>
+    
+<tr>
+<td>City:</td>
+<td id="cityname"></td>
+</tr>
+
+<tr>
+<td>Current Condition:</td>
+<td id="condition"></td>
+</tr>
+
+<tr>
+<td>Temperature (US Fahrenheit):</td>
+<td id="temperature"></td>
+</tr>
+
+<tr>
+<td>Wind Speed & Direction (MPH):</td>
+<td id="windspeed"></td>
+</tr>
+
+<tr>
+<td>Humidity :</td>
+<td id="humidity"></td>
+</tr>
+
+<tr>
+<td>Temp Min and Max (US Fahrenheit)</td>
+<td id="tempminmax"></td>
+</tr>
+
+</table>
+</div>
+</body>
+</html>
